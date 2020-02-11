@@ -41,7 +41,7 @@ class CLChatPhotoView: UIView {
         let albumButton = CLChatPhotoCellBotton()
         albumButton.icon = UIImage.init(named: "btn_photo")
         albumButton.text = "相册"
-        albumButton.addTarget(self, action: #selector(albumButtonAction(button:)), for: .touchUpInside)
+        albumButton.addTarget(self, action: #selector(albumButtonAction), for: .touchUpInside)
         return albumButton
     }()
     ///相机按钮
@@ -58,11 +58,8 @@ class CLChatPhotoView: UIView {
         albumContentView.backgroundColor = UIColor.randomColor
         return albumContentView
     }()
-    ///点击相册
-    var albumButtonCallback: (()->())?
     ///点击相机
     var cameraButtonCallback: (()->())?
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.frame = CGRect(x: 0, y: 0, width: width, height: height)
@@ -98,18 +95,14 @@ extension CLChatPhotoView {
     }
 }
 extension CLChatPhotoView {
-    ///控制器将要旋转
-    func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        coordinator.animate(alongsideTransition: { (_) in
-        }) { (_) in
-            
+    @objc private func albumButtonAction() {
+        albumContentView.snp.updateConstraints { (make) in
+            make.top.equalTo(0)
         }
-    }
-}
-extension CLChatPhotoView {
-    @objc private func albumButtonAction(button: UIButton) {
-        button.isSelected = !button.isSelected
-//        albumButtonCallback?()
+        UIView.animate(withDuration: 0.25) {
+            self.setNeedsLayout()
+            self.layoutIfNeeded()
+        }
     }
     @objc private func cameraButtonButtonAction() {
         cameraButtonCallback?()

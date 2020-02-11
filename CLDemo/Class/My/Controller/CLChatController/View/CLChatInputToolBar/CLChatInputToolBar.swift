@@ -15,8 +15,6 @@ protocol CLChatInputToolBarDelegate: class {
     func inputBarWillShowKeyboard()
     ///键盘将要隐藏
     func inputBarWillHiddenKeyboard()
-    ///点击相册按钮
-    func inputBarClickAlbum()
     ///点击相机按钮
     func inputBarClickCamera()
     ///点击录音按钮
@@ -41,10 +39,6 @@ extension CLChatInputToolBarDelegate {
     }
     ///键盘将要隐藏
     func inputBarWillHiddenKeyboard() {
-        
-    }
-    ///点击相册按钮
-    func inputBarClickAlbum() {
         
     }
     ///点击相机按钮
@@ -196,9 +190,6 @@ class CLChatInputToolBar: UIView {
     private lazy var photoView: CLChatPhotoView = {
         let photoView = CLChatPhotoView()
         photoView.backgroundColor = hexColor("0x31313F")
-        photoView.albumButtonCallback = {[weak self] in
-            self?.delegate?.inputBarClickAlbum()
-        }
         photoView.cameraButtonCallback = {[weak self] in
             self?.delegate?.inputBarClickCamera()
         }
