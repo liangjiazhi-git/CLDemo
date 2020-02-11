@@ -95,6 +95,14 @@ extension CLChatPhotoView {
     }
 }
 extension CLChatPhotoView {
+    ///重置状态
+    func reset() {
+        albumContentView.snp.updateConstraints { (make) in
+            make.top.equalTo(height + cl_safeAreaInsets().bottom)
+        }
+    }
+}
+extension CLChatPhotoView {
     @objc private func albumButtonAction() {
         albumContentView.snp.updateConstraints { (make) in
             make.top.equalTo(0)

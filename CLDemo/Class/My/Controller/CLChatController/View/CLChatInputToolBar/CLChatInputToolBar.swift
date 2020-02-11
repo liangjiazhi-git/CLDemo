@@ -604,12 +604,15 @@ extension CLChatInputToolBar {
         isShowPhotoKeyboard = false
         isShowEmojiKeyboard = false
         isShowVoiceKeyboard = false
+        
         middleSpaceView.snp.updateConstraints { (make) in
             make.height.equalTo(0)
         }
-        UIView.animate(withDuration: 0.25) {
+        UIView.animate(withDuration: 0.25, animations: {
             self.superview?.setNeedsLayout()
             self.superview?.layoutIfNeeded()
+        }) { (_) in
+            self.photoView.reset()
         }
         textViewResignFirstResponder()
     }
