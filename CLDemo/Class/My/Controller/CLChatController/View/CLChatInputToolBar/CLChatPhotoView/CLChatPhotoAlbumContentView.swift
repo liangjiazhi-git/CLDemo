@@ -19,8 +19,12 @@ class CLChatPhotoAlbumContentView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = UIColor.clear
+        collectionView.register(CLChatPhotoAlbumCell.classForCoder(), forCellWithReuseIdentifier: "CLChatPhotoAlbumCell")
         collectionView.delegate = self
-        collectionView.backgroundColor = UIColor.red
+        collectionView.dataSource = self
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
          return collectionView
      }()
     ///底部工具条
@@ -37,7 +41,7 @@ class CLChatPhotoAlbumContentView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-extension CLChatPhotoAlbumContentView: UICollectionViewDelegate {
+extension CLChatPhotoAlbumContentView {
     private func initUI() {
         addSubview(topToolBar)
         addSubview(collectionView)
@@ -58,4 +62,28 @@ extension CLChatPhotoAlbumContentView: UICollectionViewDelegate {
             make.bottom.equalTo(bottomToolBar.snp.top)
         }
     }
+}
+extension CLChatPhotoAlbumContentView: UICollectionViewDelegate {
+}
+extension CLChatPhotoAlbumContentView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: frame.height - 88)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+}
+extension CLChatPhotoAlbumContentView: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 100
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CLChatPhotoAlbumCell", for: indexPath)
+        cell.backgroundColor = UIColor.randomColor
+        return cell
+    }
+    
 }
