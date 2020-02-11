@@ -52,10 +52,9 @@ class CLChatPhotoView: UIView {
         cameraButton.addTarget(self, action: #selector(cameraButtonButtonAction), for: .touchUpInside)
         return cameraButton
     }()
-    ///相册按钮
+    ///相册
     private lazy var albumContentView: CLChatPhotoAlbumContentView = {
         let albumContentView = CLChatPhotoAlbumContentView()
-        albumContentView.backgroundColor = UIColor.randomColor
         return albumContentView
     }()
     ///点击相机

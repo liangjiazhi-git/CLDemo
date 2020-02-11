@@ -7,8 +7,22 @@
 //
 
 import UIKit
+import Photos
 
 class CLChatPhotoAlbumContentView: UIView {
+    ///数据源
+    private lazy var fetchResult: PHFetchResult<PHAsset> = {
+        let options = PHFetchOptions()
+        options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        let fetchResult = PHAsset.fetchAssets(with: options)
+        return fetchResult
+    }()
+    /// 带缓存的图片管理对象
+    private var imageManager: PHCachingImageManager = {
+        let imageManager = PHCachingImageManager()
+        imageManager.stopCachingImagesForAllAssets()
+        return imageManager
+    }()
     ///顶部工具条
     private lazy var topToolBar: UIView = {
         let topToolBar = UIView()
@@ -62,12 +76,17 @@ extension CLChatPhotoAlbumContentView {
             make.bottom.equalTo(bottomToolBar.snp.top)
         }
     }
+    private func calculateSize(with asset: PHAsset) -> CGSize {
+        let scale = CGFloat(asset.pixelWidth / asset.pixelHeight)
+        let height = frame.height - 88
+        return CGSize(width: height * scale, height: height)
+    }
 }
 extension CLChatPhotoAlbumContentView: UICollectionViewDelegate {
 }
 extension CLChatPhotoAlbumContentView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: frame.height - 88)
+        return calculateSize(with: fetchResult[indexPath.row])
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
@@ -78,11 +97,15 @@ extension CLChatPhotoAlbumContentView: UICollectionViewDataSource {
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return fetchResult.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CLChatPhotoAlbumCell", for: indexPath)
-        cell.backgroundColor = UIColor.randomColor
+        let asset = fetchResult[indexPath.row]
+        let size = calculateSize(with: asset).applying(CGAffineTransform(scaleX: UIScreen.main.scale, y: UIScreen.main.scale))
+        imageManager.requestImage(for: asset, targetSize: size, contentMode: .aspectFill, options: nil) { (image, info) in
+            (cell as? CLChatPhotoAlbumCell)?.imageView.image = image
+        }
         return cell
     }
     
