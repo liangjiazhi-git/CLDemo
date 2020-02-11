@@ -10,18 +10,18 @@ import SnapKit
 
 class CLChatPhotoView: UIView {
     ///间隙
-    private var edgeInsets: UIEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: -20, right: -20)
+    private var edgeInsets: UIEdgeInsets = UIEdgeInsets(top: 30, left: 20, bottom: -30, right: -20)
     ///行间隙
-    private var rowMargin: CGFloat = 20
+    private var rowMargin: CGFloat = 30
     ///列间隙
-    private var columnMargin: CGFloat = 20
+    private var columnMargin: CGFloat = 30
     ///多少行
     private var rowNumber: Int = 2
     ///多少列
     private var columnNumber: Int = 4
     ///大小
     private var itemSize: CGSize {
-        return CGSize(width: 80, height: 80)
+        return CGSize(width: 90, height: 90)
     }
     ///控件宽度
     private var width: CGFloat {

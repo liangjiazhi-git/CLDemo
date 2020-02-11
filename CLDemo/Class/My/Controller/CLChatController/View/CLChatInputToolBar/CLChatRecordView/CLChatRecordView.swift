@@ -13,7 +13,7 @@ class CLChatRecordView: UIView {
     ///定时器
     private var timer: CLGCDTimer?
     ///高度
-    private (set) var height: CGFloat = 240
+    private (set) var height: CGFloat = 250
     ///红圈
     private lazy var redcircle: UIView = {
         let redcircle = UIView()
