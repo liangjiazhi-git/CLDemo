@@ -77,11 +77,13 @@ class CLChatInputToolBar: UIView {
     ///内容视图
     private lazy var contentView: UIView = {
         let contentView = UIView()
-        let topBorder = CALayer()
-        topBorder.frame = CGRect(x: 0, y: 0, width: cl_screenWidth(), height: 1)
-        topBorder.backgroundColor = hexColor("0x22222D").cgColor
-        contentView.layer.addSublayer(topBorder)
         return contentView
+    }()
+    ///顶部线条
+    private lazy var topLineView: UIView = {
+        let topLineView = UIView()
+        topLineView.backgroundColor = hexColor("0x22222D")
+        return topLineView
     }()
     ///顶部工具条
     private lazy var topToolBar: UIView = {
@@ -335,6 +337,7 @@ extension CLChatInputToolBar {
     private func initUI() {
         backgroundColor = hexColor("0x31313F")
         addSubview(contentView)
+        addSubview(topLineView)
         contentView.addSubview(topToolBar)
         contentView.addSubview(middleSpaceView)
         contentView.addSubview(bottomSafeView)
@@ -356,6 +359,10 @@ extension CLChatInputToolBar {
                 make.left.equalTo(self.snp.left)
                 make.right.equalTo(self.snp.right)
             }
+        }
+        topLineView.snp.makeConstraints { (make) in
+            make.top.right.left.equalToSuperview()
+            make.height.equalTo(1)
         }
         topToolBar.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(contentView)

@@ -41,7 +41,7 @@ class CLChatPhotoView: UIView {
         let albumButton = CLChatPhotoCellBotton()
         albumButton.icon = UIImage.init(named: "btn_photo")
         albumButton.text = "相册"
-        albumButton.addTarget(self, action: #selector(albumButtonAction), for: .touchUpInside)
+        albumButton.addTarget(self, action: #selector(albumButtonAction(button:)), for: .touchUpInside)
         return albumButton
     }()
     ///相机按钮
@@ -51,6 +51,12 @@ class CLChatPhotoView: UIView {
         cameraButton.text = "相机"
         cameraButton.addTarget(self, action: #selector(cameraButtonButtonAction), for: .touchUpInside)
         return cameraButton
+    }()
+    ///相册按钮
+    private lazy var albumContentView: CLChatPhotoAlbumContentView = {
+        let albumContentView = CLChatPhotoAlbumContentView()
+        albumContentView.backgroundColor = UIColor.randomColor
+        return albumContentView
     }()
     ///点击相册
     var albumButtonCallback: (()->())?
@@ -71,6 +77,7 @@ extension CLChatPhotoView {
     private func initUI() {
         addSubview(albumButton)
         addSubview(cameraButton)
+        addSubview(albumContentView)
     }
     private func makeConstraints() {
         albumButton.snp.makeConstraints { (make) in
@@ -82,6 +89,11 @@ extension CLChatPhotoView {
             make.left.equalTo(albumButton.snp.right).offset(rowMargin)
             make.top.equalTo(edgeInsets.top)
             make.size.equalTo(itemSize)
+        }
+        albumContentView.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.height.equalTo(height)
+            make.top.equalTo(height + cl_safeAreaInsets().bottom)
         }
     }
 }
@@ -95,8 +107,9 @@ extension CLChatPhotoView {
     }
 }
 extension CLChatPhotoView {
-    @objc private func albumButtonAction() {
-        albumButtonCallback?()
+    @objc private func albumButtonAction(button: UIButton) {
+        button.isSelected = !button.isSelected
+//        albumButtonCallback?()
     }
     @objc private func cameraButtonButtonAction() {
         cameraButtonCallback?()
