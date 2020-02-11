@@ -96,7 +96,7 @@
 - (void)refreshRootViewController {
     //创建新的根控制器
     CLTabbarController *tabbarController = [[CLTabbarController alloc] init];
-    tabbarController.selectedIndex = 3;
+    tabbarController.selectedIndex = 0;
     UINavigationController *navigationController = tabbarController.selectedViewController;
     NSMutableArray *viewControllers = navigationController.viewControllers.mutableCopy;
     //取出我的页面，提前加载，解决返回按钮不变化
