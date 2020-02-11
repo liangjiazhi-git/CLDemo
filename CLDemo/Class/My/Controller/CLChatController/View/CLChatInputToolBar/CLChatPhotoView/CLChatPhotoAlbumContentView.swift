@@ -14,7 +14,7 @@ class CLChatPhotoAlbumContentView: UIView {
     private lazy var fetchResult: PHFetchResult<PHAsset> = {
         let options = PHFetchOptions()
         options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        let fetchResult = PHAsset.fetchAssets(with: options)
+        let fetchResult = PHAsset.fetchAssets(with: .image, options: options)
         return fetchResult
     }()
     /// 带缓存的图片管理对象
@@ -57,6 +57,7 @@ class CLChatPhotoAlbumContentView: UIView {
 }
 extension CLChatPhotoAlbumContentView {
     private func initUI() {
+        backgroundColor = hexColor("0x31313F")
         addSubview(topToolBar)
         addSubview(collectionView)
         addSubview(bottomToolBar)
@@ -90,6 +91,9 @@ extension CLChatPhotoAlbumContentView: UICollectionViewDelegateFlowLayout {
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     }
 }
 extension CLChatPhotoAlbumContentView: UICollectionViewDataSource {
