@@ -142,10 +142,9 @@ extension CLChatEmojiView {
     ///控制器将要旋转
     func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         collectionView.contentOffset = CGPoint.zero
-        collectionView.isHidden = true
-        coordinator.animate(alongsideTransition: { (_) in
-        }) { (_) in
-            self.collectionView.isHidden = false
+        collectionView.alpha = 0.0
+        coordinator.animate(alongsideTransition: nil) { (_) in
+            self.collectionView.alpha = 1.0
             self.layout.invalidateLayout()
             self.initData()
             self.pageControl.numberOfPages = self.emojiDataSource.count
