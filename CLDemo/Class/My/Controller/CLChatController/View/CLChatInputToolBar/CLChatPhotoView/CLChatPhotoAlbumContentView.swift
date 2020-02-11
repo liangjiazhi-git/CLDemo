@@ -77,7 +77,7 @@ extension CLChatPhotoAlbumContentView {
         }
     }
     private func calculateSize(with asset: PHAsset) -> CGSize {
-        let scale = CGFloat(asset.pixelWidth / asset.pixelHeight)
+        let scale = CGFloat(asset.pixelWidth) / CGFloat(asset.pixelHeight)
         let height = frame.height - 88
         return CGSize(width: height * scale, height: height)
     }
