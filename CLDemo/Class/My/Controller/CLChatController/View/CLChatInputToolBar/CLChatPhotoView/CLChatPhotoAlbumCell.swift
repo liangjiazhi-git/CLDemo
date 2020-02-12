@@ -20,7 +20,7 @@ class CLChatPhotoAlbumCell: UICollectionViewCell {
     private var endPoint: CGPoint = .zero
     private var direction: CLChatPhotoMoveDirection = .none
     private var isOnWindow: Bool = false
-    private var gestureMinimumTranslation: CGFloat = 20.0
+    private var gestureMinimumTranslation: CGFloat = 0.0
     private lazy var tipsBackgroundView: UIView = {
         let tipsBackgroundView = UIView()
         tipsBackgroundView.backgroundColor = hexColor("0x323232", alpha: 0.45)
@@ -97,8 +97,8 @@ extension CLChatPhotoAlbumCell {
             direction = .none
         } else if recognizer.state == .changed && direction == .none {
             direction = determinePictureDirectionIfNeeded(translation)
+            print("==========\(direction)")
         }
-        print("============\(translation.y)")
         if (direction == .up || direction == .down) && recognizer.state == .changed {
             verticalAction(with: recognizer)
             lockScollViewCallBack?(!isOnWindow)
@@ -118,39 +118,25 @@ extension CLChatPhotoAlbumCell {
 }
 extension CLChatPhotoAlbumCell {
     func determinePictureDirectionIfNeeded(_ translation: CGPoint) -> CLChatPhotoMoveDirection {
-        if direction != .none {
-            return direction
+        let absX = CGFloat(abs(Float(translation.x)))
+        let absY = CGFloat(abs(Float(translation.y)))
+        if max(absX, absY) < gestureMinimumTranslation {
+            return .none
         }
-        if abs(CGFloat(translation.x)) > gestureMinimumTranslation {
-            var gestureHorizontal = false
-            if translation.y == 0.0 {
-                gestureHorizontal = true
+        if absX > absY {
+            if translation.x < 0 {
+                return.left
             } else {
-                gestureHorizontal = abs(CGFloat(translation.x / translation.y)) > 5.0
+                return.right
             }
-            if gestureHorizontal {
-                if translation.x > 0.0 {
-                    return .right
-                } else {
-                    return .left
-                }
-            }
-        } else if abs(CGFloat(translation.y)) > gestureMinimumTranslation {
-            var gestureVertical = false
-            if translation.x == 0.0 {
-                gestureVertical = true
+        } else if absY > absX {
+            if translation.y < 0 {
+                return .up
             } else {
-                gestureVertical = abs(CGFloat(translation.y / translation.x)) > 5.0
-            }
-            if gestureVertical {
-                if translation.y > 0.0 {
-                    return .down
-                } else {
-                    return .up
-                }
+                return.down
             }
         }
-        return direction
+        return .none
     }
     func verticalAction(with recognizer: UIPanGestureRecognizer) {
         var cellCenterPoint = CGPoint.zero
