@@ -102,7 +102,7 @@ extension CLChatPhotoAlbumCell {
             verticalAction(with: recognizer)
             lockScollViewCallBack?(!isOnWindow)
         }
-        if recognizer.state == .ended {
+        if recognizer.state == .ended || recognizer.state == .cancelled {
             if direction == .up || direction == .down {
                 if endPoint.y < 0 && isOnWindow {
                     sendImageRecognizer(recognizer)
