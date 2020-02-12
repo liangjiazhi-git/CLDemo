@@ -188,10 +188,15 @@ extension CLChatPhotoAlbumCell {
         guard let view = recognizer.view else {
             return
         }
-        let worldOrginalRect = contentView.convert(bounds, to: UIApplication.shared.keyWindow)
+        let worldOrginalRect = contentView.convert(contentView.center, to: view.superview)
         tipsBackgroundView.isHidden = true
         UIView.animate(withDuration: 0.25, animations: {
-            view.frame = worldOrginalRect
+            view.snp.remakeConstraints { (make) in
+                make.width.height.equalTo(self.bounds.size)
+                make.center.equalTo(worldOrginalRect)
+            }
+            view.superview?.setNeedsLayout()
+            view.superview?.layoutIfNeeded()
         }) { _ in
             self.contentView.addSubview(view)
             view.snp.remakeConstraints { (make) in
@@ -200,5 +205,4 @@ extension CLChatPhotoAlbumCell {
             }
         }
     }
-
 }
