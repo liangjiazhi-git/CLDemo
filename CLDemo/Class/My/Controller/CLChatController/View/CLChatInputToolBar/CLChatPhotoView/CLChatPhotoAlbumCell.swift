@@ -155,34 +155,47 @@ extension CLChatPhotoAlbumCell {
         var cellCenterPoint = CGPoint.zero
         var worldCenterPoint = CGPoint.zero
         let translation = recognizer.translation(in: contentView)
-        let keyWindow = UIApplication.shared.keyWindow
-        cellCenterPoint = CGPoint(x: imageView.center.x, y: (translation.y) + (imageView.center.y))
+        guard let keyWindow = UIApplication.shared.keyWindow, let view = recognizer.view else {
+            return
+        }
+        cellCenterPoint = CGPoint(x: view.center.x, y: (translation.y) + (view.center.y))
         if isOnWindow {
             cellCenterPoint = contentView.convert(cellCenterPoint, from: keyWindow)
+        }else {
+            keyWindow.addSubview(view)
+            view.snp.remakeConstraints { (make) in
+                make.width.height.equalTo(bounds.size)
+                make.center.equalTo(cellCenterPoint)
+            }
         }
-        keyWindow?.addSubview(imageView)
-        endPoint = contentView.convert(imageView.center, from: keyWindow)
+        endPoint = contentView.convert(view.center, from: keyWindow)
         if endPoint.y < 0 && isOnWindow {
             tipsBackgroundView.isHidden = false
         } else {
             tipsBackgroundView.isHidden = true
         }
         worldCenterPoint = contentView.convert(cellCenterPoint, to: keyWindow)
-        imageView.center = worldCenterPoint
+        view.snp.remakeConstraints { (make) in
+            make.width.height.equalTo(bounds.size)
+            make.center.equalTo(worldCenterPoint)
+        }
         isOnWindow = true
         recognizer.setTranslation(CGPoint(x: 0, y: 0), in: contentView)
     }
-    func sendImageRecognizer(_ recognizer: UIPanGestureRecognizer?) {
+    func sendImageRecognizer(_ recognizer: UIPanGestureRecognizer) {
+        guard let view = recognizer.view else {
+            return
+        }
         tipsBackgroundView.isHidden = true
-        contentView.addSubview(imageView)
-        imageView.snp.remakeConstraints { (make) in
+        contentView.addSubview(view)
+        view.snp.remakeConstraints { (make) in
             make.width.height.equalTo(0)
             make.center.equalToSuperview()
         }
         setNeedsLayout()
         layoutIfNeeded()
         UIView.animate(withDuration: 0.3) {
-            self.imageView.snp.remakeConstraints { (make) in
+            view.snp.remakeConstraints { (make) in
                 make.width.height.equalToSuperview()
                 make.center.equalToSuperview()
             }
@@ -190,14 +203,17 @@ extension CLChatPhotoAlbumCell {
             self.layoutIfNeeded()
         }
     }
-    func backImageRecognizer(_ recognizer: UIPanGestureRecognizer?) {
+    func backImageRecognizer(_ recognizer: UIPanGestureRecognizer) {
+        guard let view = recognizer.view else {
+            return
+        }
         let worldOrginalRect = contentView.convert(bounds, to: UIApplication.shared.keyWindow)
         tipsBackgroundView.isHidden = true
         UIView.animate(withDuration: 0.5, animations: {
-            self.imageView.frame = worldOrginalRect
+            view.frame = worldOrginalRect
         }) { _ in
-            self.contentView.addSubview(self.imageView)
-            self.imageView.snp.remakeConstraints { (make) in
+            self.contentView.addSubview(view)
+            view.snp.remakeConstraints { (make) in
                 make.width.height.equalToSuperview()
                 make.center.equalToSuperview()
             }
