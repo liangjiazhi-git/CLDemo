@@ -8,7 +8,7 @@
 
 import UIKit
 
-func hexColor(_ hexString: String)  -> UIColor {
+func hexColor(_ hexString: String, alpha: CGFloat = 1.0)  -> UIColor {
     let hexString = hexString.trimmingCharacters(in: .whitespacesAndNewlines)
     let scanner = Scanner(string: hexString)
      
@@ -27,7 +27,7 @@ func hexColor(_ hexString: String)  -> UIColor {
     let red   = CGFloat(r) / 255.0
     let green = CGFloat(g) / 255.0
     let blue  = CGFloat(b) / 255.0
-    return UIColor.init(red: red, green: green, blue: blue, alpha: 1)
+    return UIColor.init(red: red, green: green, blue: blue, alpha: alpha)
 }
 extension UIColor {
 ///返回随机颜色

@@ -17,10 +17,25 @@ enum CLChatPhotoMoveDirection {
 }
 class CLChatPhotoAlbumCell: UICollectionViewCell {
     var lockScollViewCallBack: ((Bool) -> ())?
+    private var endPoint: CGPoint = .zero
     private var direction: CLChatPhotoMoveDirection = .none
     private var isOnWindow: Bool = false
     private var gestureMinimumTranslation: CGFloat = 20.0
-    
+    private lazy var tipsBackgroundView: UIView = {
+        let tipsBackgroundView = UIView()
+        tipsBackgroundView.backgroundColor = hexColor("0x323232", alpha: 0.45)
+        tipsBackgroundView.isHidden = true
+        return tipsBackgroundView
+    }()
+    private lazy var tipsLabel: UILabel = {
+        let tipsLabel = UILabel()
+        tipsLabel.textAlignment = .center
+        tipsLabel.backgroundColor = UIColor.clear
+        tipsLabel.textColor = UIColor.white
+        tipsLabel.font = UIFont.systemFont(ofSize: 15)
+        tipsLabel.text = "松手发送"
+        return tipsLabel
+    }()
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true
@@ -39,11 +54,23 @@ class CLChatPhotoAlbumCell: UICollectionViewCell {
 extension CLChatPhotoAlbumCell {
     private func initUI() {
         contentView.addSubview(imageView)
+        imageView.addSubview(tipsBackgroundView)
+        tipsBackgroundView.addSubview(tipsLabel)
     }
     private func makeConstraints() {
         imageView.snp.makeConstraints { (make) in
             make.width.height.equalToSuperview()
             make.center.equalToSuperview()
+        }
+        tipsBackgroundView.snp.makeConstraints { (make) in
+            make.top.equalTo(5)
+            make.centerX.equalToSuperview()
+        }
+        tipsLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(5)
+            make.right.equalTo(-5)
+            make.top.equalTo(2)
+            make.bottom.equalTo(-2)
         }
     }
     private func addPanGestureRecognizer() {
@@ -135,17 +162,12 @@ extension CLChatPhotoAlbumCell {
         if let view = recognizer.view {
             lastWindow?.addSubview(view)
         }
-        //判断距离
-        let endPoint = contentView.convert(recognizer.view?.center ?? CGPoint.zero, from: lastWindow)
-//        self.endPoint = endPoint
+        endPoint = contentView.convert(recognizer.view?.center ?? .zero, from: lastWindow)
         if endPoint.y < 0 && isOnWindow {
-            //发送出去
-//            tipsLabel.hidden = false
+            tipsBackgroundView.isHidden = false
         } else {
-            //返回cell上
-//            tipsLabel.hidden = true
+            tipsBackgroundView.isHidden = true
         }
-        //转换为世界坐标
         worldCenterPoint = contentView.convert(cellCenterPoint, to: lastWindow)
         recognizer.view?.center = worldCenterPoint
         isOnWindow = true
