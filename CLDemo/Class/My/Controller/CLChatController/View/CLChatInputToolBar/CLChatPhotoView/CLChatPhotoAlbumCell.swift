@@ -63,8 +63,7 @@ extension CLChatPhotoAlbumCell {
     }
     private func makeConstraints() {
         imageView.snp.makeConstraints { (make) in
-            make.width.height.equalToSuperview()
-            make.center.equalToSuperview()
+            make.center.width.height.equalToSuperview()
         }
         tipsBackgroundView.snp.makeConstraints { (make) in
             make.top.equalTo(5)
@@ -93,7 +92,6 @@ extension CLChatPhotoAlbumCell: UIGestureRecognizerDelegate {
 }
 extension CLChatPhotoAlbumCell {
     @objc func handGesture(recognizer: UIPanGestureRecognizer) {
-        let lastWindow = UIApplication.shared.windows.last
         let translation = recognizer.translation(in: contentView)
         if recognizer.state == .began {
             direction = .none
@@ -106,11 +104,10 @@ extension CLChatPhotoAlbumCell {
         }
         if recognizer.state == .ended {
             if direction == .up || direction == .down {
-                let endPoint = contentView.convert(recognizer.view?.center ?? .zero, from: lastWindow)
                 if endPoint.y < 0 && isOnWindow {
-//                    sendImageRecognizer(recognizer)
+                    sendImageRecognizer(recognizer)
                 } else {
-//                    backImageRecognizer(recognizer)
+                    backImageRecognizer(recognizer)
                 }
             }
             isOnWindow = false
@@ -158,23 +155,53 @@ extension CLChatPhotoAlbumCell {
         var cellCenterPoint = CGPoint.zero
         var worldCenterPoint = CGPoint.zero
         let translation = recognizer.translation(in: contentView)
-        let lastWindow = UIApplication.shared.keyWindow //[[UIApplication sharedApplication].windows lastObject];
-        cellCenterPoint = CGPoint(x: recognizer.view?.center.x ?? 0.0, y: (translation.y) + (recognizer.view?.center.y ?? 0.0))
+        let keyWindow = UIApplication.shared.keyWindow
+        cellCenterPoint = CGPoint(x: imageView.center.x, y: (translation.y) + (imageView.center.y))
         if isOnWindow {
-            cellCenterPoint = contentView.convert(cellCenterPoint, from: lastWindow)
+            cellCenterPoint = contentView.convert(cellCenterPoint, from: keyWindow)
         }
-        if let view = recognizer.view {
-            lastWindow?.addSubview(view)
-        }
-        endPoint = contentView.convert(recognizer.view?.center ?? .zero, from: lastWindow)
+        keyWindow?.addSubview(imageView)
+        endPoint = contentView.convert(imageView.center, from: keyWindow)
         if endPoint.y < 0 && isOnWindow {
             tipsBackgroundView.isHidden = false
         } else {
             tipsBackgroundView.isHidden = true
         }
-        worldCenterPoint = contentView.convert(cellCenterPoint, to: lastWindow)
-        recognizer.view?.center = worldCenterPoint
+        worldCenterPoint = contentView.convert(cellCenterPoint, to: keyWindow)
+        imageView.center = worldCenterPoint
         isOnWindow = true
         recognizer.setTranslation(CGPoint(x: 0, y: 0), in: contentView)
     }
+    func sendImageRecognizer(_ recognizer: UIPanGestureRecognizer?) {
+        tipsBackgroundView.isHidden = true
+        contentView.addSubview(imageView)
+        imageView.snp.remakeConstraints { (make) in
+            make.width.height.equalTo(0)
+            make.center.equalToSuperview()
+        }
+        setNeedsLayout()
+        layoutIfNeeded()
+        UIView.animate(withDuration: 0.3) {
+            self.imageView.snp.remakeConstraints { (make) in
+                make.width.height.equalToSuperview()
+                make.center.equalToSuperview()
+            }
+            self.setNeedsLayout()
+            self.layoutIfNeeded()
+        }
+    }
+    func backImageRecognizer(_ recognizer: UIPanGestureRecognizer?) {
+        let worldOrginalRect = contentView.convert(bounds, to: UIApplication.shared.keyWindow)
+        tipsBackgroundView.isHidden = true
+        UIView.animate(withDuration: 0.5, animations: {
+            self.imageView.frame = worldOrginalRect
+        }) { _ in
+            self.contentView.addSubview(self.imageView)
+            self.imageView.snp.remakeConstraints { (make) in
+                make.width.height.equalToSuperview()
+                make.center.equalToSuperview()
+            }
+        }
+    }
+
 }
