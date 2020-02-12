@@ -88,9 +88,12 @@ extension CLChatPhotoView {
 extension CLChatPhotoView {
     ///重置状态
     func reset() {
-        albumContentView?.snp.updateConstraints { (make) in
+        albumContentView?.snp.remakeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.height.equalTo(height)
             make.top.equalTo(height + cl_safeAreaInsets().bottom)
         }
+        albumContentView?.scrollToLeft()
     }
 }
 extension CLChatPhotoView {
@@ -112,7 +115,7 @@ extension CLChatPhotoView {
                 return
             }
             addSubview(albumContentView)
-            albumContentView.snp.makeConstraints { (make) in
+            albumContentView.snp.remakeConstraints { (make) in
                 make.left.right.equalToSuperview()
                 make.height.equalTo(height)
                 make.top.equalTo(height + cl_safeAreaInsets().bottom)
@@ -120,7 +123,9 @@ extension CLChatPhotoView {
             setNeedsLayout()
             layoutIfNeeded()
             UIView.animate(withDuration: 0.25) {
-                albumContentView.snp.updateConstraints { (make) in
+                albumContentView.snp.remakeConstraints { (make) in
+                    make.left.right.equalToSuperview()
+                    make.height.equalTo(self.height)
                     make.top.equalTo(0)
                 }
                 self.setNeedsLayout()

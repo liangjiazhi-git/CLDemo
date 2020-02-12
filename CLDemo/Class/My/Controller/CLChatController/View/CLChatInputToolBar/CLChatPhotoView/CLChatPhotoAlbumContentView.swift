@@ -24,7 +24,7 @@ class CLChatPhotoAlbumContentView: UIView {
         return topToolBar
     }()
     ///collectionView
-     private lazy var collectionView: UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -34,8 +34,8 @@ class CLChatPhotoAlbumContentView: UIView {
         collectionView.dataSource = self
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
-         return collectionView
-     }()
+        return collectionView
+    }()
     ///底部工具条
     private lazy var bottomToolBar: UIView = {
         let bottomToolBar = UIView()
@@ -90,6 +90,12 @@ extension CLChatPhotoAlbumContentView {
         let scale = CGFloat(asset.pixelWidth) / CGFloat(asset.pixelHeight)
         let height = frame.height - 88
         return CGSize(width: height * scale, height: height)
+    }
+}
+extension CLChatPhotoAlbumContentView {
+    ///划到最左边
+    func scrollToLeft(animated: Bool = true) {
+        collectionView.setContentOffset(.zero, animated: animated)
     }
 }
 extension CLChatPhotoAlbumContentView: UICollectionViewDelegate {
