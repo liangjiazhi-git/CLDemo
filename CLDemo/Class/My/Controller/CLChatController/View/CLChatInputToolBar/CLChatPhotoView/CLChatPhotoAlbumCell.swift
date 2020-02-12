@@ -124,23 +124,31 @@ extension CLChatPhotoAlbumCell {
         return direction
     }
     func verticalAction(with recognizer: UIPanGestureRecognizer) {
-        var cellCenter = CGPoint.zero
-        var worldCenter = CGPoint.zero
+        var cellCenterPoint = CGPoint.zero
+        var worldCenterPoint = CGPoint.zero
         let translation = recognizer.translation(in: contentView)
-        
-        guard let lastWindow = UIApplication.shared.keyWindow, let view = recognizer.view else {
-            return
-        }
+        let lastWindow = UIApplication.shared.keyWindow //[[UIApplication sharedApplication].windows lastObject];
+        cellCenterPoint = CGPoint(x: recognizer.view?.center.x ?? 0.0, y: (translation.y) + (recognizer.view?.center.y ?? 0.0))
         if isOnWindow {
-            cellCenter = contentView.convert(cellCenter, from: lastWindow)
+            cellCenterPoint = contentView.convert(cellCenterPoint, from: lastWindow)
         }
-        cellCenter = CGPoint(x: view.center.x, y: (translation.y) + view.center.y)
-        lastWindow.addSubview(view)
-        worldCenter = contentView.convert(cellCenter, to: lastWindow)
-        view.center = worldCenter
-        print("==========\(worldCenter)")
+        if let view = recognizer.view {
+            lastWindow?.addSubview(view)
+        }
+        //判断距离
+        let endPoint = contentView.convert(recognizer.view?.center ?? CGPoint.zero, from: lastWindow)
+//        self.endPoint = endPoint
+        if endPoint.y < 0 && isOnWindow {
+            //发送出去
+//            tipsLabel.hidden = false
+        } else {
+            //返回cell上
+//            tipsLabel.hidden = true
+        }
+        //转换为世界坐标
+        worldCenterPoint = contentView.convert(cellCenterPoint, to: lastWindow)
+        recognizer.view?.center = worldCenterPoint
         isOnWindow = true
-        recognizer.setTranslation(.zero, in: contentView)
+        recognizer.setTranslation(CGPoint(x: 0, y: 0), in: contentView)
     }
-
 }
