@@ -139,15 +139,15 @@ extension CLChatPhotoAlbumCell {
     }
     func verticalAction(with recognizer: UIPanGestureRecognizer) {
         var cellCenterPoint = CGPoint.zero
-        guard let keyWindow = UIApplication.shared.keyWindow, let view = recognizer.view else {
+        guard let keyWindow = UIApplication.shared.keyWindow, let view = recognizer.view, let superview = view.superview else {
             return
         }
         let translation = recognizer.translation(in: keyWindow)
-        let center = view.superview!.convert(view.center, to: keyWindow)
+        let center = superview.convert(view.center, to: keyWindow)
         if !isOnWindow {
             keyWindow.addSubview(view)
         }
-        endPoint = contentView.convert(view.center, from: keyWindow)
+        endPoint = contentView.convert(center, from: keyWindow)
         if endPoint.y < 0 && isOnWindow {
             tipsBackgroundView.isHidden = false
         } else {
@@ -158,10 +158,10 @@ extension CLChatPhotoAlbumCell {
             make.width.height.equalTo(bounds.size)
             make.center.equalTo(cellCenterPoint)
         }
-        view.superview?.setNeedsLayout()
-        view.superview?.layoutIfNeeded()
+        keyWindow.setNeedsLayout()
+        keyWindow.layoutIfNeeded()
         isOnWindow = true
-        recognizer.setTranslation(CGPoint(x: 0, y: 0), in: view.superview)
+        recognizer.setTranslation(CGPoint(x: 0, y: 0), in: keyWindow)
     }
     func sendImageRecognizer(_ recognizer: UIPanGestureRecognizer) {
         guard let view = recognizer.view else {
