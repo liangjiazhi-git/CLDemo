@@ -11,12 +11,7 @@ import Photos
 
 class CLChatPhotoAlbumContentView: UIView {
     ///数据源
-    private lazy var fetchResult: PHFetchResult<PHAsset> = {
-        let options = PHFetchOptions()
-        options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        let fetchResult = PHAsset.fetchAssets(with: .image, options: options)
-        return fetchResult
-    }()
+    private var fetchResult: PHFetchResult<PHAsset>?
     /// 带缓存的图片管理对象
     private var imageManager: PHCachingImageManager = {
         let imageManager = PHCachingImageManager()
@@ -50,6 +45,7 @@ class CLChatPhotoAlbumContentView: UIView {
         super.init(frame: frame)
         initUI()
         makeConstraints()
+        initData()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -77,7 +73,20 @@ extension CLChatPhotoAlbumContentView {
             make.bottom.equalTo(bottomToolBar.snp.top)
         }
     }
-    private func calculateSize(with asset: PHAsset) -> CGSize {
+    private func initData() {
+        DispatchQueue.global().async {
+            let options = PHFetchOptions()
+            options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+            self.fetchResult = PHAsset.fetchAssets(with: .image, options: options)
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    private func calculateSize(with asset: PHAsset?) -> CGSize {
+        guard let asset = asset else {
+            return .zero
+        }
         let scale = CGFloat(asset.pixelWidth) / CGFloat(asset.pixelHeight)
         let height = frame.height - 88
         return CGSize(width: height * scale, height: height)
@@ -87,7 +96,7 @@ extension CLChatPhotoAlbumContentView: UICollectionViewDelegate {
 }
 extension CLChatPhotoAlbumContentView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return calculateSize(with: fetchResult[indexPath.row])
+        return calculateSize(with: fetchResult?[indexPath.row])
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
@@ -101,7 +110,7 @@ extension CLChatPhotoAlbumContentView: UICollectionViewDataSource {
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return fetchResult.count
+        return fetchResult?.count ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CLChatPhotoAlbumCell", for: indexPath)
@@ -109,10 +118,11 @@ extension CLChatPhotoAlbumContentView: UICollectionViewDataSource {
             photoAlbumCell.lockScollViewCallBack = {[weak self](lock) in
                 self?.collectionView.isScrollEnabled = lock
             }
-            let asset = fetchResult[indexPath.row]
-            let size = calculateSize(with: asset).applying(CGAffineTransform(scaleX: UIScreen.main.scale, y: UIScreen.main.scale))
-            imageManager.requestImage(for: asset, targetSize: size, contentMode: .aspectFill, options: nil) { (image, info) in
-                photoAlbumCell.image = image
+            if let asset = fetchResult?[indexPath.row] {
+                let size = calculateSize(with: asset).applying(CGAffineTransform(scaleX: UIScreen.main.scale, y: UIScreen.main.scale))
+                imageManager.requestImage(for: asset, targetSize: size, contentMode: .aspectFill, options: nil) { (image, info) in
+                    photoAlbumCell.image = image
+                }
             }
         }
         return cell
