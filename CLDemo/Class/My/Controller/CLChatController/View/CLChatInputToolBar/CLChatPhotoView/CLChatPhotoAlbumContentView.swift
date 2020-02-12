@@ -117,5 +117,4 @@ extension CLChatPhotoAlbumContentView: UICollectionViewDataSource {
         }
         return cell
     }
-    
 }
