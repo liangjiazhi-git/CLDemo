@@ -105,10 +105,15 @@ extension CLChatPhotoAlbumContentView: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CLChatPhotoAlbumCell", for: indexPath)
-        let asset = fetchResult[indexPath.row]
-        let size = calculateSize(with: asset).applying(CGAffineTransform(scaleX: UIScreen.main.scale, y: UIScreen.main.scale))
-        imageManager.requestImage(for: asset, targetSize: size, contentMode: .aspectFill, options: nil) { (image, info) in
-            (cell as? CLChatPhotoAlbumCell)?.imageView.image = image
+        if let photoAlbumCell = cell as? CLChatPhotoAlbumCell {
+            photoAlbumCell.lockScollViewCallBack = {[weak self](lock) in
+                self?.collectionView.isScrollEnabled = lock
+            }
+            let asset = fetchResult[indexPath.row]
+            let size = calculateSize(with: asset).applying(CGAffineTransform(scaleX: UIScreen.main.scale, y: UIScreen.main.scale))
+            imageManager.requestImage(for: asset, targetSize: size, contentMode: .aspectFill, options: nil) { (image, info) in
+                photoAlbumCell.imageView.image = image
+            }
         }
         return cell
     }
