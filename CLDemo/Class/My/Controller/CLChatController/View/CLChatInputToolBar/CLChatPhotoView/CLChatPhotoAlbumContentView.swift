@@ -112,7 +112,7 @@ extension CLChatPhotoAlbumContentView: UICollectionViewDataSource {
             let asset = fetchResult[indexPath.row]
             let size = calculateSize(with: asset).applying(CGAffineTransform(scaleX: UIScreen.main.scale, y: UIScreen.main.scale))
             imageManager.requestImage(for: asset, targetSize: size, contentMode: .aspectFill, options: nil) { (image, info) in
-                photoAlbumCell.imageView.image = image
+                photoAlbumCell.image = image
             }
         }
         return cell
