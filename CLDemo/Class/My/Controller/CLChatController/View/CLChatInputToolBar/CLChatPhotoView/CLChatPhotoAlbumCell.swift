@@ -25,6 +25,7 @@ class CLChatPhotoAlbumCell: UICollectionViewCell {
         let tipsBackgroundView = UIView()
         tipsBackgroundView.backgroundColor = hexColor("0x323232", alpha: 0.45)
         tipsBackgroundView.isHidden = true
+        tipsBackgroundView.clipsToBounds = true
         return tipsBackgroundView
     }()
     private lazy var tipsLabel: UILabel = {
@@ -46,6 +47,9 @@ class CLChatPhotoAlbumCell: UICollectionViewCell {
         initUI()
         makeConstraints()
         addPanGestureRecognizer()
+        setNeedsLayout()
+        layoutIfNeeded()
+        tipsBackgroundView.layer.cornerRadius = tipsBackgroundView.bounds.height * 0.5
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
