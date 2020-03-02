@@ -153,7 +153,7 @@ extension CLPopupManager {
     ///   - autorotate: 是否支持页面旋转
     ///   - interfaceOrientationMask: 页面旋转支持方向
     ///   - only: 是否唯一弹窗(自动顶掉前面所有弹窗)
-    class func showFlop(statusBarStyle: UIStatusBarStyle = .lightContent, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = false) {
+    class func showFlop(statusBarStyle: UIStatusBarStyle = .default, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = false) {
         let controller = FlopController()
         controller.statusBarStyle = statusBarStyle
         controller.statusBarHidden = statusBarHidden

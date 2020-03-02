@@ -23,12 +23,12 @@ class CLPopupFlopController: CLBaseViewController {
     }
     @objc func showFlop() {
         CLPopupManager.showFlop()
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            CLPopupManager.showFlop(statusBarHidden: true)
-        }
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4) {
-            CLPopupManager.showFlop(statusBarStyle: .default, statusBarHidden: false)
-        }
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+//            CLPopupManager.showFlop(statusBarHidden: true)
+//        }
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4) {
+//            CLPopupManager.showFlop(statusBarStyle: .default, statusBarHidden: false)
+//        }
 //        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 6) {
 //            CLPopupManager.showFlop(statusBarStyle: .default)
 //        }

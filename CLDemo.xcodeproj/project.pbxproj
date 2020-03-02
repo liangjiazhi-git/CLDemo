@@ -168,9 +168,9 @@
 		5B80D9EC1DDD976A00A20E34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80D9EB1DDD976A00A20E34 /* AppDelegate.m */; };
 		5B80D9F41DDD976A00A20E34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B80D9F31DDD976A00A20E34 /* Assets.xcassets */; };
 		5B80D9F71DDD976A00A20E34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B80D9F51DDD976A00A20E34 /* LaunchScreen.storyboard */; };
-		5B80DA471DDD993F00A20E34 /* CLEssenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80DA221DDD993F00A20E34 /* CLEssenceController.m */; };
+		5B80DA471DDD993F00A20E34 /* CLMyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80DA221DDD993F00A20E34 /* CLMyController.m */; };
 		5B80DA491DDD993F00A20E34 /* CLCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80DA2A1DDD993F00A20E34 /* CLCollectionController.m */; };
-		5B80DA4A1DDD993F00A20E34 /* CLMyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80DA301DDD993F00A20E34 /* CLMyController.m */; };
+		5B80DA4A1DDD993F00A20E34 /* CLHomepageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80DA301DDD993F00A20E34 /* CLHomepageController.m */; };
 		5B80DA4B1DDD993F00A20E34 /* CLCurriculumController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80DA361DDD993F00A20E34 /* CLCurriculumController.m */; };
 		5B80DA4C1DDD993F00A20E34 /* UIImage+CLScaleToSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80DA3C1DDD993F00A20E34 /* UIImage+CLScaleToSize.m */; };
 		5B80DA4E1DDD993F00A20E34 /* CLCustomTabbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B80DA431DDD993F00A20E34 /* CLCustomTabbar.m */; };
@@ -181,6 +181,8 @@
 		5BB848261E00237900BB266D /* CLEssenceListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB848251E00237900BB266D /* CLEssenceListController.m */; };
 		5BBB62921E7444A100B28FC3 /* CLChartToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB62911E7444A100B28FC3 /* CLChartToolBar.m */; };
 		5BC3FB8921CE96A400B7FF82 /* CLRotatingPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3FB8821CE96A400B7FF82 /* CLRotatingPictureViewController.swift */; };
+		5BD661D9240CCA30009508CD /* CLMessagePopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD661D7240CCA30009508CD /* CLMessagePopupController.swift */; };
+		5BD661DA240CCA30009508CD /* CLTipsPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD661D8240CCA30009508CD /* CLTipsPopupController.swift */; };
 		5BE0FA3C1E03C2C400914DFF /* NSString+CLCalculateSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0FA3B1E03C2C400914DFF /* NSString+CLCalculateSize.m */; };
 		5BE0FA3F1E03E03900914DFF /* CLSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0FA3E1E03E03900914DFF /* CLSearchBar.m */; };
 		B51EE6C723DF092400146862 /* CLChatLayoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EE6C623DF092400146862 /* CLChatLayoutCell.swift */; };
@@ -496,12 +498,12 @@
 		5B80D9F61DDD976A00A20E34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B80D9F81DDD976A00A20E34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B80DA1A1DDD97D300A20E34 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		5B80DA211DDD993F00A20E34 /* CLEssenceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLEssenceController.h; sourceTree = "<group>"; };
-		5B80DA221DDD993F00A20E34 /* CLEssenceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLEssenceController.m; sourceTree = "<group>"; };
+		5B80DA211DDD993F00A20E34 /* CLMyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMyController.h; sourceTree = "<group>"; };
+		5B80DA221DDD993F00A20E34 /* CLMyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMyController.m; sourceTree = "<group>"; };
 		5B80DA291DDD993F00A20E34 /* CLCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCollectionController.h; sourceTree = "<group>"; };
 		5B80DA2A1DDD993F00A20E34 /* CLCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLCollectionController.m; sourceTree = "<group>"; };
-		5B80DA2F1DDD993F00A20E34 /* CLMyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMyController.h; sourceTree = "<group>"; };
-		5B80DA301DDD993F00A20E34 /* CLMyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMyController.m; sourceTree = "<group>"; };
+		5B80DA2F1DDD993F00A20E34 /* CLHomepageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLHomepageController.h; sourceTree = "<group>"; };
+		5B80DA301DDD993F00A20E34 /* CLHomepageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLHomepageController.m; sourceTree = "<group>"; };
 		5B80DA351DDD993F00A20E34 /* CLCurriculumController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCurriculumController.h; sourceTree = "<group>"; };
 		5B80DA361DDD993F00A20E34 /* CLCurriculumController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLCurriculumController.m; sourceTree = "<group>"; };
 		5B80DA3B1DDD993F00A20E34 /* UIImage+CLScaleToSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CLScaleToSize.h"; sourceTree = "<group>"; };
@@ -522,6 +524,8 @@
 		5BBB62911E7444A100B28FC3 /* CLChartToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLChartToolBar.m; sourceTree = "<group>"; };
 		5BC3FB8521CE966A00B7FF82 /* CLDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		5BC3FB8821CE96A400B7FF82 /* CLRotatingPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLRotatingPictureViewController.swift; sourceTree = "<group>"; };
+		5BD661D7240CCA30009508CD /* CLMessagePopupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLMessagePopupController.swift; sourceTree = "<group>"; };
+		5BD661D8240CCA30009508CD /* CLTipsPopupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLTipsPopupController.swift; sourceTree = "<group>"; };
 		5BE0FA3A1E03C2C400914DFF /* NSString+CLCalculateSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CLCalculateSize.h"; sourceTree = "<group>"; };
 		5BE0FA3B1E03C2C400914DFF /* NSString+CLCalculateSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CLCalculateSize.m"; sourceTree = "<group>"; };
 		5BE0FA3D1E03E03900914DFF /* CLSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSearchBar.h; sourceTree = "<group>"; };
@@ -1324,6 +1328,8 @@
 			isa = PBXGroup;
 			children = (
 				5B190E6823B66811005A2474 /* CLPopupManager.swift */,
+				5BD661DC240CCD31009508CD /* CLTipsPopupController */,
+				5BD661DB240CCD26009508CD /* CLMessagePopupController */,
 				5B190E6323B66811005A2474 /* FlopController */,
 			);
 			path = Popup;
@@ -1476,10 +1482,10 @@
 			isa = PBXGroup;
 			children = (
 				5B80DA1C1DDD993F00A20E34 /* Base */,
-				5B80DA1F1DDD993F00A20E34 /* Essence */,
+				5B80DA2D1DDD993F00A20E34 /* Homepage */,
 				5B80DA331DDD993F00A20E34 /* Curriculum */,
 				5B80DA271DDD993F00A20E34 /* Collection */,
-				5B80DA2D1DDD993F00A20E34 /* My */,
+				5B80DA1F1DDD993F00A20E34 /* My */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -1501,21 +1507,21 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		5B80DA1F1DDD993F00A20E34 /* Essence */ = {
+		5B80DA1F1DDD993F00A20E34 /* My */ = {
 			isa = PBXGroup;
 			children = (
 				5B80DA201DDD993F00A20E34 /* Controller */,
 				5B80DA231DDD993F00A20E34 /* Model */,
 				5B80DA241DDD993F00A20E34 /* View */,
 			);
-			path = Essence;
+			path = My;
 			sourceTree = "<group>";
 		};
 		5B80DA201DDD993F00A20E34 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5B80DA211DDD993F00A20E34 /* CLEssenceController.h */,
-				5B80DA221DDD993F00A20E34 /* CLEssenceController.m */,
+				5B80DA211DDD993F00A20E34 /* CLMyController.h */,
+				5B80DA221DDD993F00A20E34 /* CLMyController.m */,
 				5BB848241E00237900BB266D /* CLEssenceListController.h */,
 				5BB848251E00237900BB266D /* CLEssenceListController.m */,
 			);
@@ -1559,21 +1565,21 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		5B80DA2D1DDD993F00A20E34 /* My */ = {
+		5B80DA2D1DDD993F00A20E34 /* Homepage */ = {
 			isa = PBXGroup;
 			children = (
 				5B80DA2E1DDD993F00A20E34 /* Controller */,
 				0CCDA30C219854D90057BA14 /* Model */,
 				0CCDA310219855620057BA14 /* View */,
 			);
-			path = My;
+			path = Homepage;
 			sourceTree = "<group>";
 		};
 		5B80DA2E1DDD993F00A20E34 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5B80DA2F1DDD993F00A20E34 /* CLMyController.h */,
-				5B80DA301DDD993F00A20E34 /* CLMyController.m */,
+				5B80DA2F1DDD993F00A20E34 /* CLHomepageController.h */,
+				5B80DA301DDD993F00A20E34 /* CLHomepageController.m */,
 				5B190E5A23B667DD005A2474 /* CLPopupController */,
 				5B49566223B4FE3D00212772 /* CLFlipController */,
 				5B8A4D4123B1189C00360631 /* CLChatController */,
@@ -1703,6 +1709,22 @@
 				5B8A4D4223B118CC00360631 /* CLChatController.swift */,
 			);
 			path = CLChatController;
+			sourceTree = "<group>";
+		};
+		5BD661DB240CCD26009508CD /* CLMessagePopupController */ = {
+			isa = PBXGroup;
+			children = (
+				5BD661D7240CCA30009508CD /* CLMessagePopupController.swift */,
+			);
+			path = CLMessagePopupController;
+			sourceTree = "<group>";
+		};
+		5BD661DC240CCD31009508CD /* CLTipsPopupController */ = {
+			isa = PBXGroup;
+			children = (
+				5BD661D8240CCA30009508CD /* CLTipsPopupController.swift */,
+			);
+			path = CLTipsPopupController;
 			sourceTree = "<group>";
 		};
 		B51EE6CA23DF102900146862 /* View */ = {
@@ -2031,7 +2053,7 @@
 				0C2AE878223F87AF007D5DC5 /* CLWaveSwiftViewController.swift in Sources */,
 				5B1C74261E78F120000AB534 /* CLChartXLabel.m in Sources */,
 				0C223C772243811200E319E2 /* CLRotateAnimationSwiftController.swift in Sources */,
-				5B80DA471DDD993F00A20E34 /* CLEssenceController.m in Sources */,
+				5B80DA471DDD993F00A20E34 /* CLMyController.m in Sources */,
 				0CCDA40022D9D1C5007B41C4 /* CLPhotoBrowserTransitioningDelegate.m in Sources */,
 				0C558A9521ED956700C2C096 /* CLPasswordInputView.m in Sources */,
 				5B809616221870BD000F72F3 /* CLScanBankCardManager.m in Sources */,
@@ -2050,6 +2072,7 @@
 				0CCDA319219855B90057BA14 /* ChangeFontSizeModel.m in Sources */,
 				5B8A4D4323B118CC00360631 /* CLChatController.swift in Sources */,
 				B51EE6ED23DF138200146862 /* CLChatPhotoView.swift in Sources */,
+				5BD661DA240CCA30009508CD /* CLTipsPopupController.swift in Sources */,
 				5BE0FA3F1E03E03900914DFF /* CLSearchBar.m in Sources */,
 				5B49566423B4FF4800212772 /* CLFlipController.swift in Sources */,
 				B51EE6EE23DF138200146862 /* CLChatPhotoCellBotton.swift in Sources */,
@@ -2104,7 +2127,7 @@
 				0C93FADA22E1DECF002069F8 /* CLDrivenInteractiveTransition.m in Sources */,
 				5B190E6F23B66811005A2474 /* FlopPrizeView.swift in Sources */,
 				5B80961B221870BD000F72F3 /* CLBankCardModel.m in Sources */,
-				5B80DA4A1DDD993F00A20E34 /* CLMyController.m in Sources */,
+				5B80DA4A1DDD993F00A20E34 /* CLHomepageController.m in Sources */,
 				5B3327E323DF366600CA315C /* UIImage+Extension.swift in Sources */,
 				0CF6B84E2386626800F10986 /* CLVerticalItem.m in Sources */,
 				5B809619221870BD000F72F3 /* UIImage+Extend.m in Sources */,
@@ -2150,6 +2173,7 @@
 				5B80D9E91DDD976A00A20E34 /* main.m in Sources */,
 				0C30ED4C231E48FC00364327 /* CLLineChartViewController.m in Sources */,
 				5B3327E123DF352900CA315C /* CLConst.swift in Sources */,
+				5BD661D9240CCA30009508CD /* CLMessagePopupController.swift in Sources */,
 				0CCDA30B219850EF0057BA14 /* CLChangeFontSizeController.m in Sources */,
 				5B12FC761E7157BF0091A0E2 /* CLChartView.m in Sources */,
 				0CE733422191CBC700270851 /* UIView+CLSetRect.m in Sources */,

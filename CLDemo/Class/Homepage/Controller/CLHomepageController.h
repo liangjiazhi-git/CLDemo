@@ -1,5 +1,5 @@
 //
-//  CLEssenceController.h
+//  CLMyController.h
 //  CLDemo
 //
 //  Created by JmoVxia on 2016/11/17.
@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "CLBaseViewController.h"
 
-@interface CLEssenceController : CLBaseViewController
+@interface CLHomepageController : CLBaseViewController
 
 @end

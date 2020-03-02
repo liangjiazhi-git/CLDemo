@@ -9,7 +9,7 @@
 #import "CLChangeLanguageController.h"
 #import "CLLanguageManager.h"
 #import "NSBundle+CLLanguage.h"
-#import "CLMyController.h"
+#import "CLHomepageController.h"
 #import "CLTabbarController.h"
 
 @interface CLChangeLanguageController () <UITableViewDelegate, UITableViewDataSource>
@@ -100,7 +100,7 @@
     UINavigationController *navigationController = tabbarController.selectedViewController;
     NSMutableArray *viewControllers = navigationController.viewControllers.mutableCopy;
     //取出我的页面，提前加载，解决返回按钮不变化
-    CLMyController *me = (CLMyController *)[viewControllers firstObject];
+    CLHomepageController *me = (CLHomepageController *)[viewControllers firstObject];
     [me loadViewIfNeeded];
     //新建设置语言页面
     CLChangeLanguageController *languageController = [[CLChangeLanguageController alloc] init];
