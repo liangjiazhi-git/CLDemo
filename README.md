@@ -1,6 +1,8 @@
 # CLDemo
 这是一个综合多功能的demo
 
+![效果图](https://s2.ax1x.com/2020/03/02/3R6rL9.gif)
+
 ![效果图](https://github.com/JmoVxia/CLDemo/blob/master/1.gif)
 
 ![效果图](https://github.com/JmoVxia/CLDemo/blob/master/2.gif)
