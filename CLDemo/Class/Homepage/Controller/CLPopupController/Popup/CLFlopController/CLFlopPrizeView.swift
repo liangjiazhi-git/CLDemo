@@ -1,5 +1,5 @@
 //
-//  FlopPrizeView.swift
+//  CLFlopPrizeView.swift
 //  FUSHENG
 //
 //  Created by JmoVxia on 2019/12/27.
@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class FlopPrizeView: UIView {
+class CLFlopPrizeView: UIView {
     var numberImage: UIImage? {
         didSet {
             numberImageView.image = numberImage
@@ -32,8 +32,8 @@ class FlopPrizeView: UIView {
         titleLabel.textColor = hexColor("#FFFFFF")
         return titleLabel
     }()
-    private lazy var flopBottomView: FlopBottomView = {
-        let flopBottomView = FlopBottomView()
+    private lazy var flopBottomView: CLFlopBottomView = {
+        let flopBottomView = CLFlopBottomView()
         flopBottomView.iconImageView.image = UIImage.init(named: "share")
         flopBottomView.titleLabel.text = "邀请好友助力"
         flopBottomView.titleLabel.textColor = hexColor("#F90815")
@@ -86,7 +86,7 @@ class FlopPrizeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-extension FlopPrizeView {
+extension CLFlopPrizeView {
     @objc func bottomButtonAction() {
         
         

@@ -1,5 +1,5 @@
 //
-//  FlopController.swift
+//  CLFlopController.swift
 //  FUSHENG
 //
 //  Created by JmoVxia on 2019/12/25.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FlopController: CLPopupManagerBaseController {
+class CLFlopController: CLPopupManagerBaseController {
     var clickWantCallBack: (() -> ())?
     private var isFlop: Bool = false
     private lazy var contentView: UIView = {
@@ -55,8 +55,8 @@ class FlopController: CLPopupManagerBaseController {
         rightFlopButton.addGestureRecognizer(tap)
         return rightFlopButton
     }()
-    private lazy var prizeView: FlopPrizeView = {
-        let prizeView = FlopPrizeView()
+    private lazy var prizeView: CLFlopPrizeView = {
+        let prizeView = CLFlopPrizeView()
         return prizeView
     }()
     

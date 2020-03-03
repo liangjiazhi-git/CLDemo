@@ -1,5 +1,5 @@
 //
-//  FlopBottomView.swift
+//  CLFlopBottomView.swift
 //  FUSHENG
 //
 //  Created by JmoVxia on 2019/12/26.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FlopBottomView: UIView {
+class CLFlopBottomView: UIView {
     lazy var iconImageView: UIImageView = {
         let iconImageView = UIImageView()
         iconImageView.image = UIImage.init(named: "FlopWant")
