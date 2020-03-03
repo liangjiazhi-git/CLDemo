@@ -77,6 +77,9 @@ extension CLPopupController {
     }
     @objc func showSuccess() {
 //        CLMBProgressHUD.drawRoundLoadingView("AAAAAAAAA", view: view)
+//        CLMBProgressHUD.drawRightView(withText: "AAAAAA", view: view) {
+//
+//        }
         CLPopupManager.showSuccess()
     }
 }
