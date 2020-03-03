@@ -133,9 +133,12 @@
 		0CF79B1621967AE600DD0BF1 /* 一月.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CF79B1121967AE600DD0BF1 /* 一月.json */; };
 		0CFA589A237FE935007B8231 /* CLDrawImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CFA5899237FE935007B8231 /* CLDrawImageController.m */; };
 		21EDC4EF98A85BE0B0BAD366 /* Pods_CLDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D98F87B6C8541D0FE80F2362 /* Pods_CLDemo.framework */; };
+		5B0978FE240E34A000EFE510 /* CLSuccessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0978FD240E34A000EFE510 /* CLSuccessController.swift */; };
+		5B097903240E351400EFE510 /* CLMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B097900240E351400EFE510 /* CLMBProgressHUD.m */; };
+		5B097904240E351400EFE510 /* CLMBProgressHUD+CLAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B097901240E351400EFE510 /* CLMBProgressHUD+CLAnimation.m */; };
 		5B12FC751E7157BF0091A0E2 /* CLChartMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B12FC721E7157BF0091A0E2 /* CLChartMaskView.m */; };
 		5B12FC761E7157BF0091A0E2 /* CLChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B12FC741E7157BF0091A0E2 /* CLChartView.m */; };
-		5B190E5C23B66803005A2474 /* CLPopupFlopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B190E5B23B66803005A2474 /* CLPopupFlopController.swift */; };
+		5B190E5C23B66803005A2474 /* CLPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B190E5B23B66803005A2474 /* CLPopupController.swift */; };
 		5B190E6F23B66811005A2474 /* CLFlopPrizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B190E6423B66811005A2474 /* CLFlopPrizeView.swift */; };
 		5B190E7223B66811005A2474 /* CLFlopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B190E6723B66811005A2474 /* CLFlopController.swift */; };
 		5B190E7323B66811005A2474 /* CLPopupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B190E6823B66811005A2474 /* CLPopupManager.swift */; };
@@ -439,11 +442,16 @@
 		0CF79B1121967AE600DD0BF1 /* 一月.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "一月.json"; sourceTree = "<group>"; };
 		0CFA5898237FE935007B8231 /* CLDrawImageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLDrawImageController.h; sourceTree = "<group>"; };
 		0CFA5899237FE935007B8231 /* CLDrawImageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLDrawImageController.m; sourceTree = "<group>"; };
+		5B0978FD240E34A000EFE510 /* CLSuccessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLSuccessController.swift; sourceTree = "<group>"; };
+		5B0978FF240E351400EFE510 /* CLMBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMBProgressHUD.h; sourceTree = "<group>"; };
+		5B097900240E351400EFE510 /* CLMBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMBProgressHUD.m; sourceTree = "<group>"; };
+		5B097901240E351400EFE510 /* CLMBProgressHUD+CLAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLMBProgressHUD+CLAnimation.m"; sourceTree = "<group>"; };
+		5B097902240E351400EFE510 /* CLMBProgressHUD+CLAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLMBProgressHUD+CLAnimation.h"; sourceTree = "<group>"; };
 		5B12FC711E7157BF0091A0E2 /* CLChartMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLChartMaskView.h; sourceTree = "<group>"; };
 		5B12FC721E7157BF0091A0E2 /* CLChartMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLChartMaskView.m; sourceTree = "<group>"; };
 		5B12FC731E7157BF0091A0E2 /* CLChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLChartView.h; sourceTree = "<group>"; };
 		5B12FC741E7157BF0091A0E2 /* CLChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLChartView.m; sourceTree = "<group>"; };
-		5B190E5B23B66803005A2474 /* CLPopupFlopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupFlopController.swift; sourceTree = "<group>"; };
+		5B190E5B23B66803005A2474 /* CLPopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLPopupController.swift; sourceTree = "<group>"; };
 		5B190E6423B66811005A2474 /* CLFlopPrizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLFlopPrizeView.swift; sourceTree = "<group>"; };
 		5B190E6723B66811005A2474 /* CLFlopController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLFlopController.swift; sourceTree = "<group>"; };
 		5B190E6823B66811005A2474 /* CLPopupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLPopupManager.swift; sourceTree = "<group>"; };
@@ -1298,6 +1306,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5B0978FC240E345700EFE510 /* CLSuccessController */ = {
+			isa = PBXGroup;
+			children = (
+				5B0978FD240E34A000EFE510 /* CLSuccessController.swift */,
+			);
+			path = CLSuccessController;
+			sourceTree = "<group>";
+		};
 		5B12FC701E7157710091A0E2 /* VIew */ = {
 			isa = PBXGroup;
 			children = (
@@ -1318,7 +1334,7 @@
 		5B190E5A23B667DD005A2474 /* CLPopupController */ = {
 			isa = PBXGroup;
 			children = (
-				5B190E5B23B66803005A2474 /* CLPopupFlopController.swift */,
+				5B190E5B23B66803005A2474 /* CLPopupController.swift */,
 				5B190E5D23B66811005A2474 /* Popup */,
 			);
 			path = CLPopupController;
@@ -1328,6 +1344,7 @@
 			isa = PBXGroup;
 			children = (
 				5B190E6823B66811005A2474 /* CLPopupManager.swift */,
+				5B0978FC240E345700EFE510 /* CLSuccessController */,
 				5BD661DC240CCD31009508CD /* CLTipsPopupController */,
 				5BD661DB240CCD26009508CD /* CLMessagePopupController */,
 				5B190E6323B66811005A2474 /* CLFlopController */,
@@ -1580,6 +1597,10 @@
 			children = (
 				5B80DA2F1DDD993F00A20E34 /* CLHomepageController.h */,
 				5B80DA301DDD993F00A20E34 /* CLHomepageController.m */,
+				5B0978FF240E351400EFE510 /* CLMBProgressHUD.h */,
+				5B097900240E351400EFE510 /* CLMBProgressHUD.m */,
+				5B097902240E351400EFE510 /* CLMBProgressHUD+CLAnimation.h */,
+				5B097901240E351400EFE510 /* CLMBProgressHUD+CLAnimation.m */,
 				5B190E5A23B667DD005A2474 /* CLPopupController */,
 				5B49566223B4FE3D00212772 /* CLFlipController */,
 				5B8A4D4123B1189C00360631 /* CLChatController */,
@@ -2084,6 +2105,7 @@
 				0CF4EF952330848B00D8B95E /* CLInputPasswordToolBar.m in Sources */,
 				0CF79AFC219678FB00DD0BF1 /* NSString+PinYin.m in Sources */,
 				B51EE6E523DF138200146862 /* CLChatEmojiItem.swift in Sources */,
+				5B097904240E351400EFE510 /* CLMBProgressHUD+CLAnimation.m in Sources */,
 				5B32C81C1E7A4AF8000C1749 /* CLChartNameToolBar.m in Sources */,
 				B5498C7823DE93910082D4E5 /* CLPhoneNumberModel.m in Sources */,
 				0C6D47E9226C37EC00699FBD /* CLPopArrowView.m in Sources */,
@@ -2117,6 +2139,7 @@
 				0CEE94872204395B007FA31B /* CLPasswordInputView.swift in Sources */,
 				B51EE6E623DF138200146862 /* CLChatEmojiDeleteItem.swift in Sources */,
 				B51EE6EB23DF138200146862 /* CLChatEmojiView.swift in Sources */,
+				5B0978FE240E34A000EFE510 /* CLSuccessController.swift in Sources */,
 				0C5854E2235416920036DBC2 /* CLBroadcastMainCell.m in Sources */,
 				0CF642FD222FECA800227361 /* CLWaveView.m in Sources */,
 				B51EE6C723DF092400146862 /* CLChatLayoutCell.swift in Sources */,
@@ -2144,6 +2167,7 @@
 				0C777A4B2217A8B900BC8AFB /* CLInputToolbarController.m in Sources */,
 				5B80961A221870BD000F72F3 /* CLDesign.m in Sources */,
 				5B80D9EC1DDD976A00A20E34 /* AppDelegate.m in Sources */,
+				5B097903240E351400EFE510 /* CLMBProgressHUD.m in Sources */,
 				0CCD1DCA231F60D200AFCE1F /* CLBroadcastView.m in Sources */,
 				0CCDA40222D9D1C5007B41C4 /* CLPhotoBrowserAnimatedTransitioning.m in Sources */,
 				B51EE6E423DF138200146862 /* CLChatEmojiItemProtocol.swift in Sources */,
@@ -2154,7 +2178,7 @@
 				0C7A1EA0231A7129002D75F2 /* CLCustomTransitionDelegate.m in Sources */,
 				0CACA4AD224CC1F80084ECC8 /* CLTextViewViewController.swift in Sources */,
 				B51EE6E723DF138200146862 /* CLChatEmojTextItem.swift in Sources */,
-				5B190E5C23B66803005A2474 /* CLPopupFlopController.swift in Sources */,
+				5B190E5C23B66803005A2474 /* CLPopupController.swift in Sources */,
 				0CC7796622D9D7E10027B310 /* CLPhotoBrowserViewController.m in Sources */,
 				0CB60B14237EC51100D10317 /* CLHorizontalCell.m in Sources */,
 				0CC171422248B4D2005B0F0A /* CLGCDTimerManager.m in Sources */,
