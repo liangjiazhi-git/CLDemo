@@ -52,7 +52,7 @@ class CLPopupController: CLBaseViewController {
         button3.snp.makeConstraints { (make) in
             make.size.equalTo(120)
             make.centerX.equalToSuperview()
-            make.top.equalTo(button1.snp.bottom).offset(20)
+            make.top.equalTo(button2.snp.bottom).offset(20)
         }
     }
 }
@@ -70,12 +70,13 @@ extension CLPopupController {
         //        }
     }
     @objc func showOne() {
-        CLPopupManager.showOneAlert(statusBarStyle: .default, autorotate: true, title: "我是一个按钮", message: "我有一个按钮")
+        CLPopupManager.showOneAlert(autorotate: true, title: "我是一个按钮", message: "我有一个按钮")
     }
     @objc func showTwo() {
-        CLPopupManager.showTwoAlert(statusBarStyle: .default, autorotate: true, title: "我是两个按钮", message: "我有两个按钮")
+        CLPopupManager.showTwoAlert(autorotate: true, title: "我是两个按钮", message: "我有两个按钮")
     }
     @objc func showSuccess() {
-        CLPopupManager.showTwoAlert(statusBarStyle: .default, autorotate: true, title: "我是两个按钮", message: "我有两个按钮")
+//        CLMBProgressHUD.drawRoundLoadingView("AAAAAAAAA", view: view)
+        CLPopupManager.showSuccess()
     }
 }

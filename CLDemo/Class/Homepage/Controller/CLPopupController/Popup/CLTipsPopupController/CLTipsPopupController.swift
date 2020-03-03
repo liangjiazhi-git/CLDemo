@@ -16,14 +16,14 @@ class CLTipsPopupController: CLPopupManagerBaseController {
     }
     var dismissInterval: TimeInterval = 0.5
     
-    private var label: UILabel = {
+    private lazy var label: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = hexColor("#BABAE2")
         label.numberOfLines = 0
         return label
     }()
-    private var backgroundView: UIView = {
+    private lazy var backgroundView: UIView = {
         let backgroundView = UIView()
         backgroundView.alpha = 0.0
         backgroundView.backgroundColor = hexColor("#5C5C71")

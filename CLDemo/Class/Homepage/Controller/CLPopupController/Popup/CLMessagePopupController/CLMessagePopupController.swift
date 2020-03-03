@@ -21,7 +21,7 @@ class CLMessagePopupController: CLPopupManagerBaseController {
     var leftCallBack: (() -> ())?
     var rightCallBack: (() -> ())?
     
-    private var contentView: UIView = {
+    private lazy var contentView: UIView = {
         let contentView = UIView()
         contentView.backgroundColor = hexColor("0xc3c3c8")
         contentView.alpha = 0.0
@@ -29,17 +29,17 @@ class CLMessagePopupController: CLPopupManagerBaseController {
         contentView.clipsToBounds = true
         return contentView
     }()
-    private var titleBackgroundView: UIView = {
+    private lazy var titleBackgroundView: UIView = {
         let titleBackgroundView = UIView()
         titleBackgroundView.backgroundColor = UIColor.white
         return titleBackgroundView
     }()
-    private var messageBackgroundView: UIView = {
+    private lazy var messageBackgroundView: UIView = {
         let messageBackgroundView = UIView()
         messageBackgroundView.backgroundColor = UIColor.white
         return messageBackgroundView
     }()
-    var titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.backgroundColor = UIColor.clear
         titleLabel.textColor = UIColor.black
@@ -48,7 +48,7 @@ class CLMessagePopupController: CLPopupManagerBaseController {
         titleLabel.font = UIFont.systemFont(ofSize: 17)
         return titleLabel
     }()
-    var messageLabel: UILabel = {
+    lazy var messageLabel: UILabel = {
         let messageLabel = UILabel()
         messageLabel.backgroundColor = UIColor.clear
         messageLabel.textColor = UIColor.black
@@ -57,7 +57,7 @@ class CLMessagePopupController: CLPopupManagerBaseController {
         messageLabel.font = UIFont.systemFont(ofSize: 13)
         return messageLabel
     }()
-    var sureButton: UIButton = {
+    lazy var sureButton: UIButton = {
         let sureButton = UIButton()
         sureButton.setBackgroundImage(imageWithColor(UIColor.white), for: .normal)
         sureButton.setBackgroundImage(imageWithColor(UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.00)), for: .highlighted)
@@ -68,7 +68,7 @@ class CLMessagePopupController: CLPopupManagerBaseController {
         sureButton.addTarget(self, action: #selector(sureButtonAction), for: .touchUpInside)
         return sureButton
     }()
-    var leftButton: UIButton = {
+    lazy var leftButton: UIButton = {
         let leftButton = UIButton()
         leftButton.setBackgroundImage(imageWithColor(UIColor.white), for: .normal)
         leftButton.setBackgroundImage(imageWithColor(UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.00)), for: .highlighted)
@@ -79,7 +79,7 @@ class CLMessagePopupController: CLPopupManagerBaseController {
         leftButton.addTarget(self, action: #selector(leftButtonAction), for: .touchUpInside)
         return leftButton
     }()
-    var rightButton: UIButton = {
+    lazy var rightButton: UIButton = {
         let rightButton = UIButton()
         rightButton.setBackgroundImage(imageWithColor(UIColor.white), for: .normal)
         rightButton.setBackgroundImage(imageWithColor(UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.00)), for: .highlighted)

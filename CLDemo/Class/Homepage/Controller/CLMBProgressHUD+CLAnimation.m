@@ -228,7 +228,7 @@
     progressLongAnimation.toValue = [NSNumber numberWithFloat: 1.0];
     progressLongAnimation.duration = 2;
     progressLongAnimation.timingFunction = progressRotateTimingFunction;
-    progressLongAnimation.repeatCount = 10000;
+    progressLongAnimation.repeatCount = MAXFLOAT;
     // 线条逐渐变短收缩的动画
     CABasicAnimation *progressLongEndAnimation = [CABasicAnimation animationWithKeyPath: @"strokeStart"];
     progressLongEndAnimation.fromValue = [NSNumber numberWithFloat: 0.0];
@@ -236,17 +236,17 @@
     progressLongEndAnimation.duration = 2;
     CAMediaTimingFunction *strokeStartTimingFunction = [[CAMediaTimingFunction alloc] initWithControlPoints: 0.65 : 0.0 :1.0 : 1.0];
     progressLongEndAnimation.timingFunction = strokeStartTimingFunction;
-    progressLongEndAnimation.repeatCount = 10000;
+    progressLongEndAnimation.repeatCount = MAXFLOAT;
     // 线条不断旋转的动画
     CABasicAnimation *progressRotateAnimation = [CABasicAnimation animationWithKeyPath: @"transform.rotation.z"];
     progressRotateAnimation.fromValue = [NSNumber numberWithFloat: 0.0];
     progressRotateAnimation.toValue = [NSNumber numberWithFloat: M_PI / 180 * 360];
-    progressRotateAnimation.repeatCount = 1000000;
+    progressRotateAnimation.repeatCount = MAXFLOAT;
     progressRotateAnimation.duration = 6;
     
     [drawLayer addAnimation:progressLongAnimation forKey: @"strokeEnd"];
-    [layer addAnimation:progressRotateAnimation forKey: @"transfrom.rotation.z"];
     [drawLayer addAnimation: progressLongEndAnimation forKey: @"strokeStart"];
+    [layer addAnimation:progressRotateAnimation forKey: @"transfrom.rotation.z"];
     
     return HUD;
 }
