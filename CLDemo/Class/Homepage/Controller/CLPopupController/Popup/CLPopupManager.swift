@@ -139,12 +139,16 @@ extension CLPopupManager {
     ///   - controller: 自定义弹窗控制器
     ///   - only: 唯一弹窗
     class func showCustom(with controller: UIViewController, only: Bool = false) {
-        makeKeyAndVisible(with: controller, only: only)
+        DispatchQueue.main.async {
+            makeKeyAndVisible(with: controller, only: only)
+        }
     }
     /// 隐藏弹窗
     /// - Parameter all: 全部弹窗
     class func dismissAll(_ all: Bool = true) {
-        destroyAll(all)
+        DispatchQueue.main.async {
+            destroyAll(all)
+        }
     }
     /// 显示翻牌弹窗
     /// - Parameters:
@@ -159,6 +163,53 @@ extension CLPopupManager {
         controller.statusBarHidden = statusBarHidden
         controller.autorotate = autorotate
         controller.interfaceOrientationMask = interfaceOrientationMask
+        showCustom(with: controller, only: only)
+    }
+    ///显示提示弹窗
+    class func showTips(statusBarStyle: UIStatusBarStyle = .lightContent, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, dismissInterval: TimeInterval = 0.5, text: String) {
+        let controller = CLTipsPopupController()
+        controller.statusBarStyle = statusBarStyle
+        controller.statusBarHidden = statusBarHidden
+        controller.autorotate = autorotate
+        controller.interfaceOrientationMask = interfaceOrientationMask
+        controller.text = text
+        controller.dismissInterval = dismissInterval
+        showCustom(with: controller, only: only)
+    }
+    ///显示一个消息弹窗
+    class func showOneAlert(statusBarStyle: UIStatusBarStyle = .lightContent, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, title: String? = nil, message: String? = nil, sure: String = "确定", sureCallBack: (() -> ())? = nil) {
+        let controller = CLMessagePopupController()
+        controller.statusBarStyle = statusBarStyle
+        controller.statusBarHidden = statusBarHidden
+        controller.autorotate = autorotate
+        controller.interfaceOrientationMask = interfaceOrientationMask
+        controller.type = .one
+        controller.titleLabel.text = title
+        controller.messageLabel.text = message
+        controller.sureButton.setTitle(sure, for: .normal)
+        controller.sureButton.setTitle(sure, for: .selected)
+        controller.sureButton.setTitle(sure, for: .highlighted)
+        controller.sureCallBack = sureCallBack
+        showCustom(with: controller, only: only)
+    }
+    ///显示两个消息弹窗
+    class func showTwoAlert(statusBarStyle: UIStatusBarStyle = .lightContent, statusBarHidden: Bool = false, autorotate: Bool = false, interfaceOrientationMask: UIInterfaceOrientationMask = .all, only: Bool = true, title: String? = nil, message: String? = nil, left: String = "取消", right: String = "确定", leftCallBack: (() -> ())? = nil, rightCallBack: (() -> ())? = nil) {
+        let controller = CLMessagePopupController()
+        controller.statusBarStyle = statusBarStyle
+        controller.statusBarHidden = statusBarHidden
+        controller.autorotate = autorotate
+        controller.interfaceOrientationMask = interfaceOrientationMask
+        controller.type = .two
+        controller.titleLabel.text = title
+        controller.messageLabel.text = message
+        controller.leftButton.setTitle(left, for: .normal)
+        controller.leftButton.setTitle(left, for: .selected)
+        controller.leftButton.setTitle(left, for: .highlighted)
+        controller.rightButton.setTitle(right, for: .normal)
+        controller.rightButton.setTitle(right, for: .selected)
+        controller.rightButton.setTitle(right, for: .highlighted)
+        controller.leftCallBack = leftCallBack
+        controller.rightCallBack = rightCallBack
         showCustom(with: controller, only: only)
     }
 }
